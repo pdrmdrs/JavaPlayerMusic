@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.image.Image?>
+
+<AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controllers.UserViewController">
+   <children>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="465.0" prefWidth="283.0">
+         <children>
+            <Label layoutX="121.0" layoutY="14.0" prefHeight="17.0" prefWidth="43.0" text="Músicas" />
+            <TextField layoutY="56.0" prefHeight="25.0" prefWidth="214.0" promptText="Procure por uma música. EX: Upgrade" />
+            <Button layoutX="223.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Buscar" />
+            <ListView layoutX="1.0" layoutY="88.0" prefHeight="308.0" prefWidth="283.0" />
+            <Button layoutX="89.0" layoutY="426.0" mnemonicParsing="false" text="Adicionar música" />
+         </children>
+      </Pane>
+      <Pane layoutX="304.0" layoutY="14.0" prefHeight="465.0" prefWidth="221.0">
+         <children>
+            <Label layoutX="90.0" layoutY="14.0" text="Playlists" />
+            <ListView layoutY="88.0" prefHeight="308.0" prefWidth="221.0" />
+            <Button layoutX="70.0" layoutY="426.0" mnemonicParsing="false" text="Criar Playlist" />
+         </children>
+      </Pane>
+      <Pane layoutX="531.0" layoutY="14.0" prefHeight="465.0" prefWidth="221.0">
+         <children>
+            <Label layoutX="77.0" layoutY="14.0" text="Playlist atual" />
+            <Label layoutX="65.0" layoutY="38.0" text="Nome da Playlist" />
+            <ListView layoutY="88.0" prefHeight="308.0" prefWidth="221.0" />
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="479.0" prefHeight="80.0" prefWidth="997.0">
+         <children>
+            <Slider layoutX="149.0" layoutY="12.0" prefHeight="14.0" prefWidth="700.0" />
+            <Label layoutX="14.0" layoutY="26.0" text="Nome da música">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="44.0" text="Nome do artista" />
+            <Button layoutX="426.0" layoutY="40.0" mnemonicParsing="false" text="&lt;&lt;" />
+            <Button layoutX="472.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" text="|&gt;" />
+            <Button layoutX="540.0" layoutY="40.0" mnemonicParsing="false" text="&gt;&gt;" />
+         </children>
+      </Pane>
+      <Pane layoutX="767.0" layoutY="229.0" prefHeight="250.0" prefWidth="243.0">
+         <children>
+            <Label layoutX="64.0" layoutY="14.0" text="Cadastrar usuário" />
+            <TextField layoutX="65.0" layoutY="48.0" />
+            <PasswordField layoutX="65.0" layoutY="87.0" prefHeight="25.0" prefWidth="149.0" />
+            <PasswordField layoutX="86.0" layoutY="125.0" prefHeight="25.0" prefWidth="128.0" />
+            <Button layoutX="75.0" layoutY="178.0" mnemonicParsing="false" text="Cadastrar" />
+            <Label layoutX="10.0" layoutY="52.0" text="Usuário:" />
+            <Label layoutX="10.0" layoutY="91.0" text="Senha:" />
+            <Label layoutX="7.0" layoutY="129.0" text="Repetir senha:" />
+            <Label layoutX="95.0" layoutY="223.0" text="Label" visible="false" />
+         </children>
+      </Pane>
+      <Pane layoutX="760.0" layoutY="14.0" prefHeight="226.0" prefWidth="250.0">
+         <children>
+            <Label layoutX="79.0" layoutY="171.0" text="Nome do usuário" />
+            <Label layoutX="116.0" layoutY="195.0" text="VIP" />
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="50.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            	<image>
+            		<Image url="@profile_default.png" />
+            	</image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

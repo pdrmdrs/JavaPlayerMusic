@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="br.ufrn.imd.controllers.AdminViewController">
+   <children>
+      <Pane layoutX="14.0" layoutY="14.0" prefHeight="264.0" prefWidth="488.0">
+         <children>
+            <Label layoutX="197.0" layoutY="14.0" text="Cadastrar Usuário" />
+            <TextField layoutX="170.0" layoutY="37.0" />
+            <TextField layoutX="170.0" layoutY="73.0" />
+            <TextField layoutX="170.0" layoutY="107.0" />
+            <CheckBox layoutX="224.0" layoutY="147.0" mnemonicParsing="false" text="VIP" />
+            <Button layoutX="210.0" layoutY="176.0" mnemonicParsing="false" text="Cadastrar" />
+            <Label layoutX="119.0" layoutY="41.0" text="Usuário:" />
+            <Label layoutX="127.0" layoutY="77.0" text="Senha:" />
+            <Label layoutX="90.0" layoutY="111.0" text="Repetir senha:" />
+            <Label layoutX="229.0" layoutY="233.0" text="Label" visible="false" />
+         </children>
+      </Pane>
+      <Pane layoutX="527.0" layoutY="14.0" prefHeight="264.0" prefWidth="488.0">
+         <children>
+            <Label layoutX="199.0" layoutY="14.0" text="Cadastrar Música" />
+            <Button layoutX="214.0" layoutY="77.0" mnemonicParsing="false" text="Buscar..." />
+            <Label layoutX="230.0" layoutY="124.0" text="Label" visible="false" />
+            <Button layoutX="211.0" layoutY="183.0" mnemonicParsing="false" text="Adicionar" />
+            <Label layoutX="229.0" layoutY="233.0" text="Label" visible="false" />
+         </children>
+      </Pane>
+      <Pane layoutX="14.0" layoutY="298.0" prefHeight="264.0" prefWidth="488.0">
+         <children>
+            <Label layoutX="199.0" layoutY="14.0" text="Remover Usuário" />
+            <ListView layoutX="11.0" layoutY="32.0" prefHeight="187.0" prefWidth="467.0" />
+            <Button layoutX="212.0" layoutY="225.0" mnemonicParsing="false" text="Remover" />
+            <Label layoutX="290.0" layoutY="229.0" text="Label" visible="false" />
+         </children>
+      </Pane>
+      <Pane layoutX="522.0" layoutY="298.0" prefHeight="264.0" prefWidth="488.0">
+         <children>
+            <Label layoutX="200.0" layoutY="14.0" text="Remover Música" />
+            <ListView layoutX="14.0" layoutY="32.0" prefHeight="187.0" prefWidth="460.0" />
+            <Button layoutX="212.0" layoutY="225.0" mnemonicParsing="false" text="Remover" />
+            <Label layoutX="288.0" layoutY="229.0" text="Label" visible="false" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
