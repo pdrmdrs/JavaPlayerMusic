@@ -31,8 +31,8 @@ public class Main extends Application {
 
 		initRootLayout();
 
-		//Navigation.goTo("LoginView");
-		Navigation.goTo("UserView");
+		Navigation.goTo("LoginView");
+		//Navigation.goTo("UserView");
 		//Navigation.goTo("AdminView");
 	}
 
