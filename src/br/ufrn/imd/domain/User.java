@@ -8,6 +8,16 @@ package br.ufrn.imd.domain;
  *
  */
 public class User {
+	
+	/**
+	 * Int to represent the id counter of the users
+	 */
+	private static int idCounter = 0;
+	
+	/**
+	 * Int to represent the id of the user
+	 */
+	private int id;
 
 	/**
 	 * String that represents the username of the user
@@ -42,6 +52,8 @@ public class User {
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
+		this.id = User.idCounter;
+		User.idCounter++;
 	}
 
 	/**
@@ -76,7 +88,38 @@ public class User {
 		this.name = name;
 	}
 
-	
+	/**
+	 * Get the id counter of the users
+	 * @return the id counter
+	 */
+	public static int getIdCounter() {
+		return idCounter;
+	}
+
+	/**
+	 * Set the id counter to the users
+	 * @param idCounter to the idCounter
+	 */
+	public static void setIdCounter(int idCounter) {
+		User.idCounter = idCounter;
+	}
+
+	/**
+	 * Get the Id of the user
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * Set the id of the user
+	 * @param id to the id of the user
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	/**
 	 * Get the username of the user
 	 * @return the username
@@ -141,4 +184,48 @@ public class User {
 		Vip = vip;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (Vip ? 1231 : 1237);
+		result = prime * result + id;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (Vip != other.Vip)
+			return false;
+		if (id != other.id)
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
+
+	
 }

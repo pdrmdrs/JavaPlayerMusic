@@ -1,5 +1,8 @@
 package br.ufrn.imd.main;
 
+import br.ufrn.imd.database.DataBase;
+import br.ufrn.imd.domain.User;
+import br.ufrn.imd.exceptions.UserAlreadyExistsException;
 import br.ufrn.imd.navigation.Navigation;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -79,6 +82,15 @@ public class Main extends Application {
 	 *            the args to run the app
 	 */
 	public static void main(String[] args) {
+		//TODO: testing users
+		DataBase db = DataBase.getInstance();
+		
+		try {
+			db.addUser(new User("user", "123456"));
+		} catch (UserAlreadyExistsException e) {
+			e.printStackTrace();
+		}
+		
 		launch(args);
 	}
 }

@@ -63,7 +63,7 @@ public class LoginViewController {
 			}
 
 		} else {
-			User user = db.findUserByUsername(this.userField.getText());
+			User user = db.getUserByUsername(this.userField.getText());
 
 			if (user != null) {// found an user with that username
 				if (user.getPassword().equals(this.passwordField.getText())) {// correct
