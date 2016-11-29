@@ -1,8 +1,10 @@
 package br.ufrn.imd.navigation;
 
 import br.ufrn.imd.main.Main;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 
 /**
  * 
@@ -26,11 +28,16 @@ public class Navigation {
 
 			AnchorPane nextView = loader.load();
 
+			FadeTransition ft = new FadeTransition(Duration.millis(1000), nextView);
+			ft.setFromValue(0.0);
+			ft.setToValue(1.0);
+			ft.play();
+
 			Main.getRootLayout().setCenter(nextView);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

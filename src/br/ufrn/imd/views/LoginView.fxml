@@ -7,9 +7,10 @@
 
 <AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controllers.LoginViewController">
    <children>
-   	  <Button layoutX="486.0" layoutY="318.0" mnemonicParsing="false" text="Entrar" />
-      <TextField alignment="CENTER" layoutX="438.0" layoutY="233.0" promptText="usuário" />
-      <PasswordField alignment="CENTER" layoutX="438.0" layoutY="276.0" promptText="senha" />
+   	  <Button fx:id="loginButton" layoutX="486.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleLogin" text="Entrar" />
+      <TextField fx:id="userField" alignment="CENTER" layoutX="438.0" layoutY="233.0" onAction="#handleLogin" promptText="usuário" />
+      <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="438.0" layoutY="276.0" onAction="#handleLogin" promptText="senha" />
       <Label layoutX="466.0" layoutY="198.0" text="Java Music Player" />
+      <Label fx:id="messageLabel" alignment="CENTER" layoutX="442.0" layoutY="369.0" prefHeight="17.0" prefWidth="149.0" text="message" textAlignment="CENTER" visible="false" />
    </children>
 </AnchorPane>
