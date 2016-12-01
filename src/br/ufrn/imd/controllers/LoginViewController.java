@@ -49,7 +49,7 @@ public class LoginViewController {
 	private Label messageLabel;
 
 	/**
-	 * Function that will handle the login button
+	 * Method that handles the login button action
 	 */
 	@FXML
 	private void handleLogin() {
@@ -69,6 +69,8 @@ public class LoginViewController {
 				if (user.getPassword().equals(this.passwordField.getText())) {// correct
 																				// password
 					this.showMessageLabel("Success!", "green");
+
+					db.setUserLogged(user);
 
 					Navigation.goTo("UserView");
 				} else {

@@ -34,10 +34,15 @@ public class DataBase implements UserDAO {
 	private static DataBase instance = new DataBase();
 
 	/**
+	 * User that is logged in
+	 */
+	private User userLogged;
+
+	/**
 	 * Private constructor, since this is a singleton class
 	 */
 	private DataBase() {
-		
+
 	}
 
 	/**
@@ -75,6 +80,14 @@ public class DataBase implements UserDAO {
 	 */
 	public static DataBase getInstance() {
 		return DataBase.instance;
+	}
+
+	public User getUserLogged() {
+		return userLogged;
+	}
+
+	public void setUserLogged(User userLogged) {
+		this.userLogged = userLogged;
 	}
 
 	/**

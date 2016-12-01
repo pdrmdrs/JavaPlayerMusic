@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="br.ufrn.imd.controllers.AdminViewController">
+<AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controllers.AdminViewController">
    <children>
       <Pane layoutX="14.0" layoutY="14.0" prefHeight="264.0" prefWidth="488.0">
          <children>
@@ -47,5 +46,6 @@
             <Label layoutX="288.0" layoutY="229.0" text="Label" visible="false" />
          </children>
       </Pane>
+      <Button layoutX="426.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleLogoffButton" prefHeight="25.0" prefWidth="173.0" text="Logoff" />
    </children>
 </AnchorPane>

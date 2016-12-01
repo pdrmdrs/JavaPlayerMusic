@@ -1,74 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.media.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.image.Image?>
 
 <AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controllers.UserViewController">
    <children>
-      <Pane layoutX="14.0" layoutY="14.0" prefHeight="465.0" prefWidth="283.0">
+      <Pane layoutX="14.0" layoutY="256.0" prefHeight="288.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="288.0">
          <children>
-            <Label layoutX="121.0" layoutY="14.0" prefHeight="17.0" prefWidth="43.0" text="Músicas" />
-            <TextField layoutY="56.0" prefHeight="25.0" prefWidth="214.0" promptText="Procure por uma música. EX: Upgrade" />
-            <Button layoutX="223.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Buscar" />
-            <ListView layoutX="1.0" layoutY="88.0" prefHeight="308.0" prefWidth="283.0" />
-            <Button layoutX="89.0" layoutY="426.0" mnemonicParsing="false" text="Adicionar música" />
+            <Button layoutX="14.0" layoutY="79.0" mnemonicParsing="false" onAction="#handleMusicsButton" prefHeight="25.0" prefWidth="173.0" text="Músicas" />
+            <Button layoutX="14.0" layoutY="116.0" mnemonicParsing="false" onAction="#handlePlayListsButton" prefHeight="25.0" prefWidth="173.0" text="Playlists" />
+            <Button layoutX="14.0" layoutY="150.0" mnemonicParsing="false" onAction="#handleActualPlayListButton" prefHeight="25.0" prefWidth="173.0" text="Playlist atual" />
+            <Button fx:id="registerUserButton" layoutX="14.0" layoutY="185.0" mnemonicParsing="false" onAction="#handleRegisterUserButton" prefHeight="25.0" prefWidth="173.0" text="Cadastrar Usuário" />
+            <Button layoutX="14.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleLogoffButton" prefHeight="25.0" prefWidth="173.0" text="Logoff" />
          </children>
       </Pane>
-      <Pane layoutX="304.0" layoutY="14.0" prefHeight="465.0" prefWidth="221.0">
+      <Pane layoutX="200.0" AnchorPane.bottomAnchor="151.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="90.0" layoutY="14.0" text="Playlists" />
-            <ListView layoutY="88.0" prefHeight="308.0" prefWidth="221.0" />
-            <Button layoutX="70.0" layoutY="426.0" mnemonicParsing="false" text="Criar Playlist" />
+            <Pane fx:id="musicsPane" disable="true" opacity="0.0" prefHeight="425.0" prefWidth="824.0">
+               <children>
+                  <TableView layoutX="13.0" layoutY="24.0" prefHeight="394.0" prefWidth="799.0">
+                     <columns>
+                        <TableColumn prefWidth="396.0" text="Música" />
+                        <TableColumn prefWidth="401.0" text="Artista" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="391.0" layoutY="6.0" text="Músicas" />
+               </children>
+            </Pane>
+            <Pane fx:id="playListsPane" disable="true" opacity="0.0" prefHeight="425.0" prefWidth="824.0">
+               <children>
+                  <Label layoutX="391.0" layoutY="6.0" text="Playlists" />
+                  <ListView layoutX="14.0" layoutY="23.0" prefHeight="358.0" prefWidth="799.0" />
+                  <Button fx:id="createPlayListButton" layoutX="361.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleCreatePlayListButton" prefHeight="25.0" prefWidth="105.0" text="Criar Playlist" />
+               </children>
+            </Pane>
+            <Pane fx:id="actualPlayListPane" disable="true" opacity="0.0" prefHeight="425.0" prefWidth="824.0">
+               <children>
+                  <TableView layoutX="13.0" layoutY="24.0" prefHeight="394.0" prefWidth="799.0">
+                     <columns>
+                        <TableColumn prefWidth="396.0" text="Música" />
+                        <TableColumn prefWidth="401.0" text="Artista" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="378.0" layoutY="6.0" text="Playlist Atual" />
+               </children>
+            </Pane>
+            <Pane fx:id="registerUserPane" disable="true" opacity="0.0" prefHeight="425.0" prefWidth="824.0">
+               <children>
+                  <Label layoutX="365.0" layoutY="6.0" text="Cadastrar Usuário" />
+                  <Button layoutX="349.0" layoutY="274.0" mnemonicParsing="false" text="Cadastrar Usuário" />
+                  <TextField layoutX="331.0" layoutY="126.0" />
+                  <TextField layoutX="331.0" layoutY="163.0" />
+                  <Label layoutX="287.0" layoutY="130.0" text="Nome:" />
+                  <Label layoutX="281.0" layoutY="167.0" text="Usuário:" />
+                  <Label layoutX="287.0" layoutY="201.0" text="Senha:" />
+                  <Label layoutX="250.0" layoutY="239.0" text="Repetir senha:" />
+                  <PasswordField layoutX="331.0" layoutY="197.0" />
+                  <PasswordField layoutX="330.0" layoutY="235.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="createPlayListPane" disable="true" opacity="0.0" prefHeight="425.0" prefWidth="824.0">
+               <children>
+                  <Label layoutX="367.0" layoutY="14.0" text="Cadastrar Playlist" />
+                  <Button layoutX="359.0" layoutY="386.0" mnemonicParsing="false" text="Cadastrar Playlist" />
+                  <TextField layoutX="338.0" layoutY="57.0" />
+                  <TableView layoutX="57.0" layoutY="126.0" prefHeight="185.0" prefWidth="342.0">
+                    <columns>
+                      <TableColumn prefWidth="172.0" text="Música" />
+                      <TableColumn prefWidth="169.0" text="Artista" />
+                    </columns>
+                  </TableView>
+                  <Button layoutX="175.0" layoutY="319.0" mnemonicParsing="false" text="Adicionar música" />
+                  <Label layoutX="235.0" layoutY="61.0" text="Nome da Playlist:" />
+                  <Label layoutX="207.0" layoutY="102.0" text="Músicas" />
+                  <Button layoutX="545.0" layoutY="319.0" mnemonicParsing="false" text="Remover música" />
+                  <TableView layoutX="426.0" layoutY="127.0" prefHeight="185.0" prefWidth="342.0">
+                     <columns>
+                        <TableColumn prefWidth="174.0" text="Música" />
+                        <TableColumn prefWidth="167.0" text="Artista" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="551.0" layoutY="102.0" text="Músicas inseridas" />
+               </children>
+            </Pane>
          </children>
       </Pane>
-      <Pane layoutX="531.0" layoutY="14.0" prefHeight="465.0" prefWidth="221.0">
+      <Pane layoutX="824.0" layoutY="440.0" prefHeight="136.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="425.0">
          <children>
-            <Label layoutX="77.0" layoutY="14.0" text="Playlist atual" />
-            <Label layoutX="65.0" layoutY="38.0" text="Nome da Playlist" />
-            <ListView layoutY="88.0" prefHeight="308.0" prefWidth="221.0" />
-         </children>
-      </Pane>
-      <Pane layoutX="14.0" layoutY="479.0" prefHeight="80.0" prefWidth="997.0">
-         <children>
-            <Slider layoutX="149.0" layoutY="12.0" prefHeight="14.0" prefWidth="700.0" />
-            <Label layoutX="14.0" layoutY="26.0" text="Nome da música">
+            <Button layoutX="353.0" layoutY="98.0" mnemonicParsing="false" text="&lt;&lt;" />
+            <Button layoutX="385.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" text="|&gt;" />
+            <Button layoutX="438.0" layoutY="98.0" mnemonicParsing="false" text="&gt;&gt;" />
+            <Label layoutX="369.0" layoutY="34.0" text="Nome do artista" />
+            <Label layoutX="365.0" layoutY="17.0" text="Nome da música">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="44.0" text="Nome do artista" />
-            <Button layoutX="426.0" layoutY="40.0" mnemonicParsing="false" text="&lt;&lt;" />
-            <Button layoutX="472.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" text="|&gt;" />
-            <Button layoutX="540.0" layoutY="40.0" mnemonicParsing="false" text="&gt;&gt;" />
+            <Slider layoutX="62.0" layoutY="62.0" prefHeight="14.0" prefWidth="700.0" />
          </children>
       </Pane>
-      <Pane layoutX="767.0" layoutY="229.0" prefHeight="250.0" prefWidth="243.0">
+      <Pane prefHeight="288.0" prefWidth="200.0" AnchorPane.bottomAnchor="288.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="824.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="64.0" layoutY="14.0" text="Cadastrar usuário" />
-            <TextField layoutX="65.0" layoutY="48.0" />
-            <PasswordField layoutX="65.0" layoutY="87.0" prefHeight="25.0" prefWidth="149.0" />
-            <PasswordField layoutX="86.0" layoutY="125.0" prefHeight="25.0" prefWidth="128.0" />
-            <Button layoutX="75.0" layoutY="178.0" mnemonicParsing="false" text="Cadastrar" />
-            <Label layoutX="10.0" layoutY="52.0" text="Usuário:" />
-            <Label layoutX="10.0" layoutY="91.0" text="Senha:" />
-            <Label layoutX="7.0" layoutY="129.0" text="Repetir senha:" />
-            <Label layoutX="95.0" layoutY="223.0" text="Label" visible="false" />
-         </children>
-      </Pane>
-      <Pane layoutX="760.0" layoutY="14.0" prefHeight="226.0" prefWidth="250.0">
-         <children>
-            <Label layoutX="79.0" layoutY="171.0" text="Nome do usuário" />
-            <Label layoutX="116.0" layoutY="195.0" text="VIP" />
-            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="50.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-            	<image>
-            		<Image url="@profile_default.png" />
-            	</image>
+            <Label layoutX="54.0" layoutY="208.0" text="Nome do usuário" />
+            <Label layoutX="91.0" layoutY="239.0" text="VIP" />
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="25.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@profile_default.png" />
+               </image>
             </ImageView>
          </children>
       </Pane>

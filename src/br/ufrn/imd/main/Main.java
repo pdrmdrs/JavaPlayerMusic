@@ -82,15 +82,16 @@ public class Main extends Application {
 	 *            the args to run the app
 	 */
 	public static void main(String[] args) {
-		//TODO: testing users
+		// TODO: testing users
 		DataBase db = DataBase.getInstance();
-		
+
 		try {
-			db.addUser(new User("user", "123456"));
+			db.addUser(new User("user", "123456", false));// user not vip
+			db.addUser(new User("user1", "123456", true));// user vip
 		} catch (UserAlreadyExistsException e) {
 			e.printStackTrace();
 		}
-		
+
 		launch(args);
 	}
 }
