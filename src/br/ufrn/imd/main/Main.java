@@ -1,8 +1,12 @@
 package br.ufrn.imd.main;
 
+import java.io.IOException;
+
 import br.ufrn.imd.database.DataBase;
 import br.ufrn.imd.domain.User;
 import br.ufrn.imd.exceptions.UserAlreadyExistsException;
+import br.ufrn.imd.io.ReaderObject;
+import br.ufrn.imd.io.WriterObject;
 import br.ufrn.imd.navigation.Navigation;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -89,6 +93,14 @@ public class Main extends Application {
 			db.addUser(new User("user", "123456", false));// user not vip
 			db.addUser(new User("user1", "123456", true));// user vip
 		} catch (UserAlreadyExistsException e) {
+			e.printStackTrace();
+		}
+		
+		//TODO: testing the musics file
+		WriterObject wo = WriterObject.getInstance();
+		try {
+			wo.writeMusicsFile();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
