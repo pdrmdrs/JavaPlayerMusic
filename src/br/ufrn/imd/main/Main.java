@@ -1,8 +1,6 @@
 package br.ufrn.imd.main;
 
-import java.io.IOException;
-
-import br.ufrn.imd.database.DataBase;
+import br.ufrn.imd.dao.UserDAO;
 import br.ufrn.imd.domain.User;
 import br.ufrn.imd.exceptions.UserAlreadyExistsException;
 import br.ufrn.imd.io.ReaderObject;
@@ -32,6 +30,9 @@ public class Main extends Application {
 	 */
 	@Override
 	public void start(Stage primaryStage) {
+		ReaderObject ro = ReaderObject.getInstance();
+		ro.readFiles();
+		
 		Main.primaryStage = primaryStage;
 		Main.primaryStage.setTitle("Java Music Player");
 
@@ -42,11 +43,17 @@ public class Main extends Application {
 
 		Navigation.goTo("LoginView");
 	}
+	
+	/**
+	 * Fuction called when the user closes the app
+	 */
+	@Override
+	public void stop() {
+		WriterObject wo = WriterObject.getInstance();
+		wo.saveFiles();
+	}
 
 	private void initRootLayout() {
-
-		System.out.println("Initializing root layout...");
-
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("../views/RootLayout.fxml"));
@@ -86,24 +93,18 @@ public class Main extends Application {
 	 *            the args to run the app
 	 */
 	public static void main(String[] args) {
-		// TODO: testing users
-		DataBase db = DataBase.getInstance();
-
-		try {
-			db.addUser(new User("user", "123456", false));// user not vip
-			db.addUser(new User("user1", "123456", true));// user vip
-		} catch (UserAlreadyExistsException e) {
-			e.printStackTrace();
-		}
 		
-		//TODO: testing the musics file
-		WriterObject wo = WriterObject.getInstance();
-		try {
-			wo.writeMusicsFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		//TODO: TEST ONLY
+//		UserDAO userDAO = new UserDAO();
+//		
+//		try {
+//			userDAO.addUser(new User("user1", "123", true, "user"));
+//			userDAO.addUser(new User("user2", "123", false, "user"));
+//		} catch (UserAlreadyExistsException e) {
+//			e.printStackTrace();
+//		}
+		
+		
 		launch(args);
 	}
 }

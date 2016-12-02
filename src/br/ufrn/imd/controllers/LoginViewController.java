@@ -1,6 +1,7 @@
 package br.ufrn.imd.controllers;
 
-import br.ufrn.imd.database.DataBase;
+import br.ufrn.imd.dao.DataBaseDAO;
+import br.ufrn.imd.dao.UserDAO;
 import br.ufrn.imd.domain.User;
 import br.ufrn.imd.navigation.Navigation;
 import javafx.fxml.FXML;
@@ -20,9 +21,9 @@ import javafx.scene.paint.Color;
 public class LoginViewController {
 
 	/**
-	 * DataBase to get the users to login
+	 * DataBaseDAO to access the DataBase
 	 */
-	private DataBase db = DataBase.getInstance();
+	private DataBaseDAO dbDAO = new DataBaseDAO();
 
 	/**
 	 * The user text input field
@@ -53,9 +54,9 @@ public class LoginViewController {
 	 */
 	@FXML
 	private void handleLogin() {
-		if (this.userField.getText().equals(db.getAdmin().getUsername())) {// admin
+		if (this.userField.getText().equals(dbDAO.getAdmin().getUsername())) {// admin
 																			// logging
-			if (this.passwordField.getText().equals(db.getAdmin().getPassword())) {
+			if (this.passwordField.getText().equals(dbDAO.getAdmin().getPassword())) {
 				this.showMessageLabel("Success!", "green");
 				Navigation.goTo("AdminView");
 			} else {
@@ -63,14 +64,16 @@ public class LoginViewController {
 			}
 
 		} else {
-			User user = db.getUserByUsername(this.userField.getText());
+			UserDAO userDAO = new UserDAO();
+			
+			User user = userDAO.getUserByUsername(this.userField.getText());
 
 			if (user != null) {// found an user with that username
 				if (user.getPassword().equals(this.passwordField.getText())) {// correct
 																				// password
 					this.showMessageLabel("Success!", "green");
 
-					db.setUserLogged(user);
+					dbDAO.setUserLogged(user);
 
 					Navigation.goTo("UserView");
 				} else {

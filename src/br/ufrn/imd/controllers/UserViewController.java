@@ -3,7 +3,7 @@ package br.ufrn.imd.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.ufrn.imd.database.DataBase;
+import br.ufrn.imd.dao.DataBaseDAO;
 import br.ufrn.imd.navigation.Navigation;
 import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
@@ -77,9 +77,9 @@ public class UserViewController {
 	private Button createPlayListButton;
 
 	/**
-	 * Running instance of the database
+	 * DataBaseDAO to access the DataBase
 	 */
-	private DataBase db = DataBase.getInstance();
+	private DataBaseDAO dbDAO = new DataBaseDAO();
 
 	/**
 	 * Initialize function to load all the necessary things for the view work
@@ -141,7 +141,7 @@ public class UserViewController {
 	 */
 	@FXML
 	private void handleLogoffButton() {
-		this.db.setUserLogged(null);
+		this.dbDAO.setUserLogged(null);
 		
 		Navigation.goTo("LoginView");
 	}
@@ -167,7 +167,7 @@ public class UserViewController {
 					// ft.setToValue(0.0);
 					// ft.play();
 
-					if (db.getUserLogged().isVip()) {
+					if (dbDAO.getUserLogged().isVip()) {
 						this.registerUserButton.setDisable(false);
 						this.createPlayListButton.setDisable(false);
 					} else {

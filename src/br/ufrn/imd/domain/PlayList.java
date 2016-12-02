@@ -11,6 +11,11 @@ import java.util.List;
  *
  */
 public class PlayList {
+	
+	/**
+	 * String that represents the playlist's name
+	 */
+	private String name;
 
 	/**
 	 * Lists that represents the content of the playlist
@@ -23,14 +28,39 @@ public class PlayList {
 	private User owner;
 	
 	/**
+	 * Empty constructor
+	 */
+	public PlayList() {
+		
+	}
+	
+	/**
 	 * Constructor of the playlist
+	 * @param name the name of the playlist
 	 * @param content the content of the playlist
 	 * @param owner the owner of the playlist
 	 */
-	public PlayList(List<Music> content, User owner) {
+	public PlayList(String name, List<Music> content, User owner) {
 		super();
+		this.name = name;
 		this.content = content;
 		this.owner = owner;
+	}
+
+	/**
+	 * Get the playlist's name
+	 * @return the playlits's name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * Set the playlist's name
+	 * @param name the playlist's name
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**

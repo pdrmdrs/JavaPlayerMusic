@@ -1,7 +1,5 @@
 package br.ufrn.imd.domain;
 
-import java.io.Serializable;
-
 /**
  * 
  * Class that represents a music
@@ -9,7 +7,7 @@ import java.io.Serializable;
  * @author Pedro Paulo
  *
  */
-public class Music implements Serializable{
+public class Music {
 	/**
 	 * The name of the music
 	 */
@@ -25,6 +23,13 @@ public class Music implements Serializable{
 	 */
 	private String directory;
 
+	/**
+	 * Empty constructor
+	 */
+	public Music() {
+		
+	}
+	
 	/**
 	 * Constructor with the directory
 	 * @param directory the directory of the music
