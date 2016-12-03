@@ -15,6 +15,7 @@ import br.ufrn.imd.domain.Music;
 import br.ufrn.imd.domain.PlayList;
 import br.ufrn.imd.domain.User;
 import br.ufrn.imd.utils.Constants;
+import br.ufrn.imd.utils.ValidatePath;
 
 /**
  * 
@@ -55,7 +56,7 @@ public class ReaderObject {
 		JSONParser parser = new JSONParser();
 
 		try {
-			Object obj = parser.parse(new FileReader(Constants.MUSICS_FILE_PATH));
+			Object obj = parser.parse(new FileReader(ValidatePath.validate(Constants.MUSICS_FILE_PATH)));
 
 			JSONObject jsonObject = (JSONObject) obj;
 
@@ -89,7 +90,7 @@ public class ReaderObject {
 		JSONParser parser = new JSONParser();
 		
 		try {
-			Object obj = parser.parse(new FileReader(Constants.USERS_FILE_PATH));
+			Object obj = parser.parse(new FileReader(ValidatePath.validate(Constants.USERS_FILE_PATH)));
 
 			JSONObject jsonObject = (JSONObject) obj;
 
@@ -125,7 +126,7 @@ public class ReaderObject {
 		JSONParser parser = new JSONParser();
 		
 		try {
-			Object obj = parser.parse(new FileReader(Constants.PLAYLISTS_FILE_PATH));
+			Object obj = parser.parse(new FileReader(ValidatePath.validate(Constants.PLAYLISTS_FILE_PATH)));
 
 			JSONObject jsonObject = (JSONObject) obj;
 
@@ -161,7 +162,7 @@ public class ReaderObject {
 		JSONParser parser = new JSONParser();
 
 		try {
-			Object obj = parser.parse(new FileReader(directory));
+			Object obj = parser.parse(new FileReader(ValidatePath.validate(directory)));
 
 			JSONObject jsonObject = (JSONObject) obj;
 
@@ -189,7 +190,6 @@ public class ReaderObject {
 	 * Method to read all the files and populate the database
 	 */
 	public void readFiles() {
-		// TODO Auto-generated method stub
 		MusicDAO musicDAO = new MusicDAO();
 		musicDAO.setMusics(this.readMusicsFile());
 		

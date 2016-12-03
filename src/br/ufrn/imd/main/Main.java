@@ -93,18 +93,6 @@ public class Main extends Application {
 	 *            the args to run the app
 	 */
 	public static void main(String[] args) {
-		
-		//TODO: TEST ONLY
-//		UserDAO userDAO = new UserDAO();
-//		
-//		try {
-//			userDAO.addUser(new User("user1", "123", true, "user"));
-//			userDAO.addUser(new User("user2", "123", false, "user"));
-//		} catch (UserAlreadyExistsException e) {
-//			e.printStackTrace();
-//		}
-		
-		
 		launch(args);
 	}
 }

@@ -14,6 +14,7 @@ import br.ufrn.imd.domain.Music;
 import br.ufrn.imd.domain.PlayList;
 import br.ufrn.imd.domain.User;
 import br.ufrn.imd.utils.Constants;
+import br.ufrn.imd.utils.ValidatePath;
 
 /**
  * 
@@ -72,7 +73,7 @@ public class WriterObject {
 		FileWriter writeFile = null;
 
 		try {
-			writeFile = new FileWriter(Constants.MUSICS_FILE_PATH);
+			writeFile = new FileWriter(ValidatePath.validate(Constants.MUSICS_FILE_PATH));
 			writeFile.write(jsonObject.toJSONString());
 			writeFile.close();
 		} catch (IOException e) {
@@ -112,7 +113,7 @@ public class WriterObject {
 		FileWriter writeFile = null;
 		
 		try {
-			writeFile = new FileWriter(Constants.USERS_FILE_PATH);
+			writeFile = new FileWriter(ValidatePath.validate(Constants.USERS_FILE_PATH));
 			writeFile.write(jsonObject.toJSONString());
 			writeFile.close();
 		} catch (IOException e) {
@@ -151,7 +152,7 @@ public class WriterObject {
 		FileWriter writeFile = null;
 
 		try {
-			writeFile = new FileWriter(Constants.PLAYLISTS_FILE_PATH);
+			writeFile = new FileWriter(ValidatePath.validate(Constants.PLAYLISTS_FILE_PATH));
 			writeFile.write(jsonObject.toJSONString());
 			writeFile.close();
 		} catch (IOException e) {
@@ -187,7 +188,7 @@ public class WriterObject {
 		FileWriter writeFile = null;
 
 		try {
-			writeFile = new FileWriter(Constants.USERS_PLAYLISTS_PATH + playList.getName() + ".json");
+			writeFile = new FileWriter(ValidatePath.validate(Constants.USERS_PLAYLISTS_PATH + playList.getName() + ".json"));
 			writeFile.write(jsonObject.toJSONString());
 			writeFile.close();
 		} catch (IOException e) {
