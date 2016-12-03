@@ -43,7 +43,8 @@ public class User {
 	 * Emptry constructor
 	 */
 	public User() {
-		
+		this.id = this.hashCode() + User.idCounter;
+		User.idCounter++;
 	}
 
 	/**

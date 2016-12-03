@@ -10,24 +10,30 @@
       <Pane layoutX="14.0" layoutY="14.0" prefHeight="264.0" prefWidth="488.0">
          <children>
             <Label layoutX="197.0" layoutY="14.0" text="Cadastrar Usuário" />
-            <TextField layoutX="170.0" layoutY="37.0" />
-            <TextField layoutX="170.0" layoutY="73.0" />
-            <TextField layoutX="170.0" layoutY="107.0" />
-            <CheckBox layoutX="224.0" layoutY="147.0" mnemonicParsing="false" text="VIP" />
-            <Button layoutX="210.0" layoutY="176.0" mnemonicParsing="false" text="Cadastrar" />
-            <Label layoutX="119.0" layoutY="41.0" text="Usuário:" />
-            <Label layoutX="127.0" layoutY="77.0" text="Senha:" />
-            <Label layoutX="90.0" layoutY="111.0" text="Repetir senha:" />
-            <Label layoutX="229.0" layoutY="233.0" text="Label" visible="false" />
+            <TextField fx:id="usernameField" layoutX="169.0" layoutY="39.0" />
+            <TextField fx:id="nameField" layoutX="168.0" layoutY="72.0" />
+            <PasswordField fx:id="pwField" layoutX="169.0" layoutY="105.0" />
+            <PasswordField fx:id="repeatPwField" layoutX="169.0" layoutY="139.0" />
+            <CheckBox fx:id="isVip" layoutX="223.0" layoutY="179.0" mnemonicParsing="false" text="VIP" />
+            <Button fx:id="registerUserButton" layoutX="211.0" layoutY="208.0" mnemonicParsing="false" onAction="#handleRegisterUser" text="Cadastrar" />
+            <Label layoutX="118.0" layoutY="43.0" text="Usuário:" />
+            <Label layoutX="126.0" layoutY="109.0" text="Senha:" />
+            <Label layoutX="89.0" layoutY="143.0" text="Repetir senha:" />
+            <Label fx:id="registerUserMessage" layoutX="228.0" layoutY="242.0" text="Label" visible="false" />
+            <Label layoutX="125.0" layoutY="76.0" text="Nome:" />
          </children>
       </Pane>
       <Pane layoutX="527.0" layoutY="14.0" prefHeight="264.0" prefWidth="488.0">
          <children>
             <Label layoutX="199.0" layoutY="14.0" text="Cadastrar Música" />
-            <Button layoutX="214.0" layoutY="77.0" mnemonicParsing="false" text="Buscar..." />
-            <Label layoutX="230.0" layoutY="124.0" text="Label" visible="false" />
-            <Button layoutX="211.0" layoutY="183.0" mnemonicParsing="false" text="Adicionar" />
+            <Button layoutX="213.0" layoutY="39.0" mnemonicParsing="false" text="Buscar..." />
+            <Label layoutX="229.0" layoutY="71.0" text="Label" visible="false" />
+            <TextField layoutX="170.0" layoutY="107.0" />
+            <TextField layoutX="170.0" layoutY="160.0" />
+            <Button layoutX="211.0" layoutY="208.0" mnemonicParsing="false" text="Adicionar" />
             <Label layoutX="229.0" layoutY="233.0" text="Label" visible="false" />
+            <Label layoutX="67.0" layoutY="111.0" text="Nome da música:" />
+            <Label layoutX="69.0" layoutY="164.0" text="Nome do artista:" />
          </children>
       </Pane>
       <Pane layoutX="14.0" layoutY="298.0" prefHeight="264.0" prefWidth="488.0">
