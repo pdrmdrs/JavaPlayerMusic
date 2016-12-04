@@ -70,11 +70,14 @@ public class UserDAO {
 	public void addUser(User user) throws UserAlreadyExistsException {
 		boolean userFound = false;
 
-		for (User u : this.db.getUsers()) {
-			if (u.equals(user) && userFound == false) {
-				userFound = true;
-			}
-		}
+		if (this.db.getUsers().contains(user))
+			userFound = true;
+//		
+//		for (User u : this.db.getUsers()) {
+//			if (u.equals(user) && userFound == false) {
+//				userFound = true;
+//			}
+//		}
 
 		if (!userFound) {
 			this.db.getUsers().add(user);
