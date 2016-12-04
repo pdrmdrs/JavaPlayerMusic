@@ -1,8 +1,5 @@
 package br.ufrn.imd.main;
 
-import br.ufrn.imd.dao.UserDAO;
-import br.ufrn.imd.domain.User;
-import br.ufrn.imd.exceptions.UserAlreadyExistsException;
 import br.ufrn.imd.io.ReaderObject;
 import br.ufrn.imd.io.WriterObject;
 import br.ufrn.imd.navigation.Navigation;

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controllers.AdminViewController">
+<AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.views.AdminViewController">
    <children>
       <Pane layoutX="14.0" layoutY="14.0" prefHeight="264.0" prefWidth="488.0">
          <children>
@@ -15,7 +15,7 @@
             <PasswordField fx:id="pwField" layoutX="169.0" layoutY="105.0" />
             <PasswordField fx:id="repeatPwField" layoutX="169.0" layoutY="139.0" />
             <CheckBox fx:id="isVip" layoutX="223.0" layoutY="179.0" mnemonicParsing="false" text="VIP" />
-            <Button fx:id="registerUserButton" layoutX="211.0" layoutY="208.0" mnemonicParsing="false" onAction="#handleRegisterUser" text="Cadastrar" />
+            <Button layoutX="211.0" layoutY="208.0" mnemonicParsing="false" onAction="#handleRegisterUser" text="Cadastrar" />
             <Label layoutX="118.0" layoutY="43.0" text="Usuário:" />
             <Label layoutX="126.0" layoutY="109.0" text="Senha:" />
             <Label layoutX="89.0" layoutY="143.0" text="Repetir senha:" />
@@ -26,12 +26,12 @@
       <Pane layoutX="527.0" layoutY="14.0" prefHeight="264.0" prefWidth="488.0">
          <children>
             <Label layoutX="199.0" layoutY="14.0" text="Cadastrar Música" />
-            <Button layoutX="213.0" layoutY="39.0" mnemonicParsing="false" text="Buscar..." />
-            <Label layoutX="229.0" layoutY="71.0" text="Label" visible="false" />
-            <TextField layoutX="170.0" layoutY="107.0" />
-            <TextField layoutX="170.0" layoutY="160.0" />
-            <Button layoutX="211.0" layoutY="208.0" mnemonicParsing="false" text="Adicionar" />
-            <Label layoutX="229.0" layoutY="233.0" text="Label" visible="false" />
+            <Button layoutX="213.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleSearchMusicButton" text="Buscar..." />
+            <Label fx:id="musicPathLabel" layoutX="229.0" layoutY="71.0" text="Label" visible="false" />
+            <TextField fx:id="musicNameField" layoutX="170.0" layoutY="107.0" />
+            <TextField fx:id="artistNameField" layoutX="170.0" layoutY="160.0" />
+            <Button layoutX="211.0" layoutY="208.0" mnemonicParsing="false" onAction="#handleAddMusicButton" text="Adicionar" />
+            <Label fx:id="addMusicMessage" layoutX="229.0" layoutY="233.0" text="Label" visible="false" />
             <Label layoutX="67.0" layoutY="111.0" text="Nome da música:" />
             <Label layoutX="69.0" layoutY="164.0" text="Nome do artista:" />
          </children>
@@ -39,15 +39,15 @@
       <Pane layoutX="14.0" layoutY="298.0" prefHeight="264.0" prefWidth="488.0">
          <children>
             <Label layoutX="199.0" layoutY="14.0" text="Remover Usuário" />
-            <ListView layoutX="11.0" layoutY="32.0" prefHeight="187.0" prefWidth="467.0" />
-            <Button layoutX="212.0" layoutY="225.0" mnemonicParsing="false" text="Remover" />
-            <Label layoutX="290.0" layoutY="229.0" text="Label" visible="false" />
+            <ListView fx:id="userListView" layoutX="11.0" layoutY="32.0" prefHeight="187.0" prefWidth="467.0" />
+            <Button layoutX="212.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleRemoveUserButton" text="Remover" />
+            <Label fx:id="removeUserMessage" layoutX="290.0" layoutY="229.0" text="Label" visible="false" />
          </children>
       </Pane>
       <Pane layoutX="522.0" layoutY="298.0" prefHeight="264.0" prefWidth="488.0">
          <children>
             <Label layoutX="200.0" layoutY="14.0" text="Remover Música" />
-            <ListView layoutX="14.0" layoutY="32.0" prefHeight="187.0" prefWidth="460.0" />
+            <ListView fx:id="musicListView" layoutX="14.0" layoutY="32.0" prefHeight="187.0" prefWidth="460.0" />
             <Button layoutX="212.0" layoutY="225.0" mnemonicParsing="false" text="Remover" />
             <Label layoutX="288.0" layoutY="229.0" text="Label" visible="false" />
          </children>
