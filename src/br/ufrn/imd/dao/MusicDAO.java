@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import br.ufrn.imd.domain.Music;
-import br.ufrn.imd.domain.User;
 import br.ufrn.imd.exceptions.CannotDeleteMusicException;
 import br.ufrn.imd.exceptions.MusicAlreadyExistsException;
 import javafx.collections.ObservableList;
