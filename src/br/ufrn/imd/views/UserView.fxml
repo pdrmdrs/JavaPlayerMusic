@@ -22,9 +22,7 @@
       </Pane>
       <Pane layoutX="824.0" layoutY="440.0" prefHeight="136.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="425.0">
          <children>
-            <Button layoutX="353.0" layoutY="98.0" mnemonicParsing="false" text="&lt;&lt;" />
-            <Button layoutX="385.0" layoutY="98.0" mnemonicParsing="false" onAction="#handlePlayButton" prefHeight="25.0" prefWidth="54.0" text="|&gt;" />
-            <Button layoutX="438.0" layoutY="98.0" mnemonicParsing="false" text="&gt;&gt;" />
+            <Button fx:id="playButton" layoutX="385.0" layoutY="98.0" mnemonicParsing="false" onAction="#handlePlayButton" prefHeight="25.0" prefWidth="54.0" text="|&gt;" />
             <Label fx:id="playerPaneArtistName" alignment="CENTER" layoutX="62.0" layoutY="31.0" prefHeight="17.0" prefWidth="700.0" text="Nome do artista" />
             <Label fx:id="playerPaneMusicName" alignment="CENTER" layoutX="62.0" layoutY="14.0" prefHeight="17.0" prefWidth="700.0" text="Nome da música">
                <font>
@@ -53,12 +51,6 @@
                   <ListView fx:id="playlistsList" layoutX="14.0" layoutY="23.0" prefHeight="358.0" prefWidth="799.0" />
                   <Button fx:id="createPlayListButton" layoutX="433.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleCreatePlayListButton" prefHeight="25.0" prefWidth="105.0" text="Criar Playlist" />
                   <Button layoutX="301.0" layoutY="386.0" mnemonicParsing="false" onAction="#handlePlaylistPaneSelectPlaylistButton" text="Selecionar Playlist" />
-               </children>
-            </Pane>
-            <Pane fx:id="actualPlayListPane" disable="true" opacity="0.0" prefHeight="425.0" prefWidth="824.0">
-               <children>
-                  <ListView fx:id="actualPlayList" layoutX="13.0" layoutY="24.0" prefHeight="394.0" prefWidth="799.0" />
-                  <Label layoutX="378.0" layoutY="6.0" text="Playlist Atual" />
                </children>
             </Pane>
             <Pane fx:id="registerUserPane" disable="true" opacity="0.0" prefHeight="425.0" prefWidth="824.0">
@@ -95,8 +87,15 @@
                <children>
                   <ListView fx:id="musicListView" layoutX="14.0" layoutY="23.0" prefHeight="358.0" prefWidth="799.0" />
                   <Label layoutX="391.0" layoutY="6.0" text="Músicas" />
-                  <Button layoutX="305.0" layoutY="399.0" mnemonicParsing="false" text="Tocar música" />
+                  <Button layoutX="305.0" layoutY="399.0" mnemonicParsing="false" onAction="#handlePlayMusicButton" text="Tocar música" />
                   <Button layoutX="433.0" layoutY="399.0" mnemonicParsing="false" text="Adicionar Música" />
+               </children>
+            </Pane>
+            <Pane fx:id="actualPlayListPane" disable="true" prefHeight="425.0" prefWidth="824.0">
+               <children>
+                  <Button layoutX="369.0" layoutY="399.0" mnemonicParsing="false" onAction="#handleActualPlaylistPlayMusicButton" text="Tocar música" />
+                  <ListView fx:id="actualPlayList" layoutX="13.0" layoutY="24.0" prefHeight="364.0" prefWidth="799.0" />
+                  <Label layoutX="378.0" layoutY="6.0" text="Playlist Atual" />
                </children>
             </Pane>
          </children>

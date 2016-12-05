@@ -14,6 +14,7 @@ import br.ufrn.imd.domain.User;
 import br.ufrn.imd.exceptions.CannotDeleteUserException;
 import br.ufrn.imd.exceptions.PlayListAlreadyExistsException;
 import br.ufrn.imd.exceptions.UserAlreadyExistsException;
+import br.ufrn.imd.main.Main;
 import br.ufrn.imd.navigation.Navigation;
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
@@ -115,6 +116,8 @@ public class UserViewController {
 	@FXML private ListView<String> playlistsList;
 	
 	@FXML private ListView<String> actualPlayList;
+	
+	@FXML private Button playButton;
 
 	/**
 	 * list that will contain all the sub panes that the main pane will display
@@ -143,8 +146,6 @@ public class UserViewController {
 	 */
 	private DataBaseDAO dbDAO = new DataBaseDAO();
 
-	
-
 	/**
 	 * Initialize function to load all the necessary things for the view work
 	 * prorperly
@@ -159,9 +160,6 @@ public class UserViewController {
 
 		this.userPaneUserName.setText(dbDAO.getUserLogged().getUsername());
 		this.userPaneUserIsVip.setVisible(dbDAO.getUserLogged().isVip());
-
-		this.playerPaneMusicName.setText(Player.getInstance().getMusicPlaying().getName());
-		this.playerPaneArtistName.setText(Player.getInstance().getMusicPlaying().getArtist());
 
 		this.updateMusicListView();
 		
@@ -224,7 +222,8 @@ public class UserViewController {
 	@FXML
 	public void handleLogoffButton() {
 		this.dbDAO.setUserLogged(null);
-
+		if(Main.player != null)
+			Main.player.getPlayer().stop();
 		Navigation.goTo("LoginView");
 	}
 
@@ -269,12 +268,38 @@ public class UserViewController {
 	 */
 	@FXML
 	public void handlePlayButton() {
-		if (Player.getInstance().getPlayer().getStatus().equals(Status.PLAYING)) {
-			Player.getInstance().pause();
+		if (Main.player.getPlayer().getStatus().equals(Status.PLAYING)) {
+			this.playButton.setText("||");
+			Main.player.pause();
 		} else {
-			Player.getInstance().play();
-
+			this.playButton.setText("|>");
+			Main.player.play();
 		}
+	}
+	
+	@FXML public void handlePlayMusicButton() {
+		this.changePlayerMusic(new MusicDAO().getMusicByName(this.musicListView.getSelectionModel().getSelectedItem()));
+	}
+	
+	private void changePlayerMusic(Music music) {
+		if(Main.player != null){
+			Main.player.stop();
+		}
+		
+		this.playerPaneMusicName.setText(music.getName());
+		this.playerPaneArtistName.setText(music.getArtist());
+		
+		Main.player = new Player();
+		
+		Main.player.setMusicPlaying(music);
+		
+		Main.player.createInstance();
+		
+		Main.player.play();
+	}
+	
+	@FXML public void handleActualPlaylistPlayMusicButton() {
+		this.changePlayerMusic(new MusicDAO().getMusicByName(this.actualPlayList.getSelectionModel().getSelectedItem()));
 	}
 
 	/**

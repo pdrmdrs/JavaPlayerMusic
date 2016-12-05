@@ -1,7 +1,5 @@
 package br.ufrn.imd.main;
 
-import java.io.File;
-
 import br.ufrn.imd.domain.Player;
 import br.ufrn.imd.io.ReaderObject;
 import br.ufrn.imd.io.WriterObject;
@@ -10,8 +8,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.fxml.FXMLLoader;
 
 /**
@@ -46,8 +42,6 @@ public class Main extends Application {
 		initRootLayout();
 
 		Navigation.goTo("LoginView");
-		
-		player = Player.getInstance();
 	}
 	
 	/**
