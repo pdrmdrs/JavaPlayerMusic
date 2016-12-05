@@ -40,8 +40,8 @@ public class MusicDAO {
  
 	/**
 	 * Method to add a music
-	 * @param music
-	 * @throws MusicAlreadyExistsException
+	 * @param music the music to add
+	 * @throws MusicAlreadyExistsException exception to show that the music already exists
 	 */
 	public void addMusic(Music music) throws MusicAlreadyExistsException {
 		
