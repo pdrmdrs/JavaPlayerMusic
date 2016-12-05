@@ -15,7 +15,7 @@ import br.ufrn.imd.domain.User;
  * @author pdr_m
  *
  */
-public class DataBase{
+public class DataBase {
 
 	/**
 	 * String to represent the
@@ -26,12 +26,12 @@ public class DataBase{
 	 * List to represents all the users
 	 */
 	private List<User> users = new ArrayList<>(); // TODO: change this to BST
-	
+
 	/**
 	 * List to save all the musics on the app
 	 */
 	private List<Music> musics = new ArrayList<>();
-	
+
 	/**
 	 * List to save all the playlists
 	 */
@@ -59,7 +59,7 @@ public class DataBase{
 	 * 
 	 * @return the admin user
 	 */
-	protected User getAdmin() {
+	public User getAdmin() {
 		return ADMIN;
 	}
 
@@ -68,7 +68,7 @@ public class DataBase{
 	 * 
 	 * @return the users list
 	 */
-	protected List<User> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
 
@@ -78,7 +78,7 @@ public class DataBase{
 	 * @param users
 	 *            to the users
 	 */
-	protected void setUsers(List<User> users) {
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 
@@ -87,45 +87,52 @@ public class DataBase{
 	 * 
 	 * @return the only running instance of this class
 	 */
-	protected static DataBase getInstance() {
+	public static DataBase getInstance() {
 		return DataBase.instance;
 	}
 
 	/**
 	 * Get the logged user
+	 * 
 	 * @return the logged user
 	 */
-	protected User getUserLogged() {
+	public User getUserLogged() {
 		return userLogged;
 	}
 
 	/**
 	 * Set the logged user
-	 * @param userLogged the logged user to set
+	 * 
+	 * @param userLogged
+	 *            the logged user to set
 	 */
-	protected void setUserLogged(User userLogged) {
+	public void setUserLogged(User userLogged) {
 		this.userLogged = userLogged;
 	}
 
 	/**
 	 * Get the musics list
+	 * 
 	 * @return the musics list
 	 */
-	protected List<Music> getMusics() {
+	public List<Music> getMusics() {
 		return this.musics;
 	}
 
 	/**
 	 * Get the playlists list
+	 * 
 	 * @return the playlists list
 	 */
-	protected List<PlayList> getPlaylists() {
+	public List<PlayList> getPlaylists() {
 		return this.playlists;
 	}
 
 	/**
 	 * Set the musics list
-	 * @param list the musics list to set
+	 * 
+	 * @param list
+	 *            the musics list to set
 	 */
 	public void setMusics(List<Music> list) {
 		this.musics = list;
@@ -133,7 +140,9 @@ public class DataBase{
 
 	/**
 	 * Set the playlists list
-	 * @param list the playlists list to set
+	 * 
+	 * @param list
+	 *            the playlists list to set
 	 */
 	public void setPlaylists(List<PlayList> list) {
 		this.playlists = list;

@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import br.ufrn.imd.domain.Music;
+import br.ufrn.imd.domain.User;
 import br.ufrn.imd.exceptions.CannotDeleteMusicException;
 import br.ufrn.imd.exceptions.MusicAlreadyExistsException;
 
@@ -117,5 +118,13 @@ public class MusicDAO {
 		if (!musicRemoved)
 			throw new CannotDeleteMusicException();
 
+	}
+
+	public Music getMusicByName(String musicSelected) {
+		for (Music m : this.getMusics()) {
+			if (m.getName().equals(musicSelected))
+				return m;
+		}
+		return null;
 	}
 }
