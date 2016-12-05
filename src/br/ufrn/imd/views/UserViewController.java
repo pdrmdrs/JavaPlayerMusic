@@ -12,13 +12,13 @@ import br.ufrn.imd.domain.PlayList;
 import br.ufrn.imd.domain.Player;
 import br.ufrn.imd.domain.User;
 import br.ufrn.imd.exceptions.CannotDeleteUserException;
+import br.ufrn.imd.exceptions.PlayListAlreadyExistsException;
 import br.ufrn.imd.exceptions.UserAlreadyExistsException;
 import br.ufrn.imd.navigation.Navigation;
 import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
@@ -35,7 +35,7 @@ import javafx.util.Duration;
  *
  */
 public class UserViewController {
-
+	
 	/**
 	 * Attributes of the music pane
 	 */
@@ -96,8 +96,6 @@ public class UserViewController {
 	@FXML
 	private PasswordField repeatPwField;
 	@FXML
-	private CheckBox isVip;
-	@FXML
 	private Label registerUserMessage;
 
 	/**
@@ -113,6 +111,10 @@ public class UserViewController {
 	@FXML private ListView<String> playlistPaneMusicsList;
 	@FXML private ListView<String> playlistPaneMusicsAddedList;
 	@FXML private Label playlistPaneMessage;
+	
+	@FXML private ListView<String> playlistsList;
+	
+	@FXML private ListView<String> actualPlayList;
 
 	/**
 	 * list that will contain all the sub panes that the main pane will display
@@ -141,6 +143,8 @@ public class UserViewController {
 	 */
 	private DataBaseDAO dbDAO = new DataBaseDAO();
 
+	
+
 	/**
 	 * Initialize function to load all the necessary things for the view work
 	 * prorperly
@@ -160,6 +164,8 @@ public class UserViewController {
 		this.playerPaneArtistName.setText(Player.getInstance().getMusicPlaying().getArtist());
 
 		this.updateMusicListView();
+		
+		this.updatePlaylistsList();
 
 		this.showPane(musicsPane);
 	}
@@ -319,8 +325,6 @@ public class UserViewController {
 	 */
 	@FXML public void handlePlaylistPaneRegisterPlaylistButton() {
 		
-		System.out.println("Playlist Register Button");
-		
 		PlayList newPlaylist = new PlayList();
 		newPlaylist.setName(this.playlistPanePlaylistNameField.getText());
 		
@@ -334,10 +338,21 @@ public class UserViewController {
 		
 		PlaylistDAO playlistDAO = new PlaylistDAO();
 		
-		playlistDAO.addNewPlaylist(newPlaylist);
+		boolean playlistAdded = true;
 		
-		this.playlistPaneMessage.setText("Playlist criada com sucesso!");
-		this.playlistPaneMessage.setVisible(true);
+		try {
+			playlistDAO.addNewPlaylist(newPlaylist);
+		} catch (PlayListAlreadyExistsException e) {
+			playlistAdded = false;
+			e.printStackTrace();
+		} finally {
+			this.updatePlaylistsList();
+			
+			String message = playlistAdded ? "Playlist criada com sucesso!" : "Não foi possível criar a playlist."; 
+			
+			this.playlistPaneMessage.setText(message);
+			this.playlistPaneMessage.setVisible(true);
+		}
 		
 	}
 	
@@ -363,5 +378,20 @@ public class UserViewController {
 	
 	private void updatePlaylistPaneMusicListView() {
 		this.playlistPaneMusicsList.setItems(FXCollections.observableArrayList(new MusicDAO().getMusicNamesList()));
+	}
+	
+	private void updatePlaylistsList() {
+		this.playlistsList.setItems(FXCollections.observableArrayList(new PlaylistDAO().getPlaylistsNames()));
+	}
+	
+	@FXML public void handlePlaylistPaneSelectPlaylistButton() {
+		PlayList selectedPlaylist = new PlaylistDAO().getPlaylistByName(this.playlistsList.getSelectionModel().getSelectedItem());
+		List<String> musicsFromSelectedPlaylist = new ArrayList<>();
+		
+		for(Music m : selectedPlaylist.getContent()){
+			musicsFromSelectedPlaylist.add(m.getName());
+		}
+		
+		this.actualPlayList.setItems(FXCollections.observableArrayList(musicsFromSelectedPlaylist));
 	}
 }

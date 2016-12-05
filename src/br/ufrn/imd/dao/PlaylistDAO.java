@@ -1,8 +1,10 @@
 package br.ufrn.imd.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrn.imd.domain.PlayList;
+import br.ufrn.imd.exceptions.PlayListAlreadyExistsException;
 
 /**
  * 
@@ -34,8 +36,42 @@ public class PlaylistDAO {
 		this.db.setPlaylists(list);
 	}
 
-	public void addNewPlaylist(PlayList newPlaylist) {
-		this.getPlaylists().add(newPlaylist);
+	public void addNewPlaylist(PlayList newPlaylist) throws PlayListAlreadyExistsException{
+		
+		boolean playlistFound = false;
+		
+		for(PlayList p : this.getPlaylists()){
+			if(p.getName().equals(newPlaylist.getName()))
+				playlistFound = true;
+		}
+		
+		if(playlistFound)
+			throw new PlayListAlreadyExistsException();
+		else
+			this.getPlaylists().add(newPlaylist);
+		
+		
+	}
+
+	public List<String> getPlaylistsNames() {
+		List<String> result = new ArrayList<>();
+		
+		for(PlayList p : this.getPlaylists())
+			result.add(p.getName());
+		
+		return result;
+	}
+
+	public PlayList getPlaylistByName(String selectedItem) {
+		
+		PlayList result = new PlayList();
+		
+		for(PlayList p : this.getPlaylists()){
+			if(p.getName().equals(selectedItem))
+				result = p;
+		}
+		
+		return result;
 	}
 	
 }

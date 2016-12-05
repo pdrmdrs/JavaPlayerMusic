@@ -29,7 +29,7 @@ public class UserDAO {
 	 *            the id of the user
 	 * @return the user found
 	 */
-	public User getUserById(int id) {
+	public User getUserById(long id) {
 		for (User u : this.getUsers()) {
 			if (u.getId() == id)
 				return u;
@@ -140,7 +140,7 @@ public class UserDAO {
 		if (!userFound) {
 			this.getUsers().remove(user);
 		} else {
-			throw new CannotDeleteUserException("Usuário não existe.");
+			throw new CannotDeleteUserException("Usuï¿½rio nï¿½o existe.");
 		}
 
 	}

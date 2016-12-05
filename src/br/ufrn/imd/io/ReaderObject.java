@@ -141,7 +141,7 @@ public class ReaderObject {
 				
 				playlist.setName(playlistObject.get("name").toString());
 				playlist.setContent(readPlaylistFile(playlistObject.get("directory").toString()));
-				playlist.setOwner(userDAO.getUserById((int) playlistObject.get("userId")));
+				playlist.setOwner(userDAO.getUserById((long) playlistObject.get("userId")));
 				
 				playlistsOnFile.add(playlist);
 			}
@@ -193,10 +193,10 @@ public class ReaderObject {
 		MusicDAO musicDAO = new MusicDAO();
 		musicDAO.setMusics(this.readMusicsFile());
 		
-		PlaylistDAO playlistDAO = new PlaylistDAO();
-		playlistDAO.setPlaylists(this.readPlaylistsFile());
-		
 		UserDAO userDAO = new UserDAO();
 		userDAO.setUsers(this.readUsersFile());
+		
+		PlaylistDAO playlistDAO = new PlaylistDAO();
+		playlistDAO.setPlaylists(this.readPlaylistsFile());
 	}
 }
