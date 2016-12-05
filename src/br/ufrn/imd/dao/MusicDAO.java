@@ -8,6 +8,7 @@ import br.ufrn.imd.domain.Music;
 import br.ufrn.imd.domain.User;
 import br.ufrn.imd.exceptions.CannotDeleteMusicException;
 import br.ufrn.imd.exceptions.MusicAlreadyExistsException;
+import javafx.collections.ObservableList;
 
 /**
  * 
@@ -126,5 +127,16 @@ public class MusicDAO {
 				return m;
 		}
 		return null;
+	}
+
+	public List<Music> getMusicsByName(ObservableList<String> items) {
+		
+		List<Music> result = new ArrayList<>();
+		
+		for(String s : items) {
+			result.add(this.getMusicByName(s));
+		}
+		
+		return result;
 	}
 }

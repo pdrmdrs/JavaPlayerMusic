@@ -34,4 +34,8 @@ public class PlaylistDAO {
 		this.db.setPlaylists(list);
 	}
 
+	public void addNewPlaylist(PlayList newPlaylist) {
+		this.getPlaylists().add(newPlaylist);
+	}
+	
 }

@@ -53,7 +53,7 @@ public class LoginViewController {
 	 * Method that handles the login button action
 	 */
 	@FXML
-	private void handleLogin() {
+	public void handleLogin() {
 		if (this.userField.getText().equals(dbDAO.getAdmin().getUsername())) {// admin
 																			// logging
 			if (this.passwordField.getText().equals(dbDAO.getAdmin().getPassword())) {
