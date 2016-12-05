@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.views.AdminViewController">
+<AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controllers.AdminViewController">
    <children>
       <Pane layoutX="14.0" layoutY="14.0" prefHeight="264.0" prefWidth="488.0">
          <children>
@@ -19,7 +19,7 @@
             <Label layoutX="118.0" layoutY="43.0" text="Usuário:" />
             <Label layoutX="126.0" layoutY="109.0" text="Senha:" />
             <Label layoutX="89.0" layoutY="143.0" text="Repetir senha:" />
-            <Label fx:id="registerUserMessage" layoutX="228.0" layoutY="242.0" text="Label" visible="false" />
+            <Label fx:id="registerUserMessage" alignment="CENTER" layoutX="3.0" layoutY="242.0" prefHeight="17.0" prefWidth="478.0" text="Label" visible="false" />
             <Label layoutX="125.0" layoutY="76.0" text="Nome:" />
          </children>
       </Pane>
@@ -27,11 +27,11 @@
          <children>
             <Label layoutX="199.0" layoutY="14.0" text="Cadastrar Música" />
             <Button layoutX="213.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleSearchMusicButton" text="Buscar..." />
-            <Label fx:id="musicPathLabel" layoutX="229.0" layoutY="71.0" text="Label" visible="false" />
+            <Label fx:id="musicPathLabel" alignment="CENTER" layoutX="5.0" layoutY="71.0" prefHeight="17.0" prefWidth="478.0" text="Label" visible="false" />
             <TextField fx:id="musicNameField" layoutX="170.0" layoutY="107.0" />
             <TextField fx:id="artistNameField" layoutX="170.0" layoutY="160.0" />
             <Button layoutX="211.0" layoutY="208.0" mnemonicParsing="false" onAction="#handleAddMusicButton" text="Adicionar" />
-            <Label fx:id="addMusicMessage" layoutX="229.0" layoutY="233.0" text="Label" visible="false" />
+            <Label fx:id="addMusicMessage" alignment="CENTER" layoutX="5.0" layoutY="242.0" prefHeight="17.0" prefWidth="478.0" text="Label" visible="false" />
             <Label layoutX="67.0" layoutY="111.0" text="Nome da música:" />
             <Label layoutX="69.0" layoutY="164.0" text="Nome do artista:" />
          </children>
@@ -41,15 +41,15 @@
             <Label layoutX="199.0" layoutY="14.0" text="Remover Usuário" />
             <ListView fx:id="userListView" layoutX="11.0" layoutY="32.0" prefHeight="187.0" prefWidth="467.0" />
             <Button layoutX="212.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleRemoveUserButton" text="Remover" />
-            <Label fx:id="removeUserMessage" layoutX="290.0" layoutY="229.0" text="Label" visible="false" />
+            <Label fx:id="removeUserMessage" alignment="CENTER" layoutX="94.0" layoutY="256.0" prefHeight="17.0" prefWidth="300.0" text="Label" visible="false" />
          </children>
       </Pane>
       <Pane layoutX="522.0" layoutY="298.0" prefHeight="264.0" prefWidth="488.0">
          <children>
             <Label layoutX="200.0" layoutY="14.0" text="Remover Música" />
             <ListView fx:id="musicListView" layoutX="14.0" layoutY="32.0" prefHeight="187.0" prefWidth="460.0" />
-            <Button layoutX="212.0" layoutY="225.0" mnemonicParsing="false" text="Remover" />
-            <Label layoutX="288.0" layoutY="229.0" text="Label" visible="false" />
+            <Button layoutX="212.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleRemoveMusicButton" text="Remover" />
+            <Label fx:id="removeMusicMessage" alignment="CENTER" layoutX="94.0" layoutY="256.0" prefHeight="17.0" prefWidth="300.0" text="Label" visible="false" />
          </children>
       </Pane>
       <Button layoutX="426.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleLogoffButton" prefHeight="25.0" prefWidth="173.0" text="Logoff" />

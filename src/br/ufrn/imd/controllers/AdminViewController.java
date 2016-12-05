@@ -1,4 +1,4 @@
-package br.ufrn.imd.views;
+package br.ufrn.imd.controllers;
 
 import java.io.File;
 
@@ -6,6 +6,7 @@ import br.ufrn.imd.dao.MusicDAO;
 import br.ufrn.imd.dao.UserDAO;
 import br.ufrn.imd.domain.Music;
 import br.ufrn.imd.domain.User;
+import br.ufrn.imd.exceptions.CannotDeleteMusicException;
 import br.ufrn.imd.exceptions.CannotDeleteUserException;
 import br.ufrn.imd.exceptions.MusicAlreadyExistsException;
 import br.ufrn.imd.exceptions.UserAlreadyExistsException;
@@ -47,6 +48,7 @@ public class AdminViewController {
 	@FXML private Label addMusicMessage;
 	
 	@FXML private ListView<String> musicListView;
+	@FXML private Label removeMusicMessage;
 	
 	/**
 	 * Initialize the necessary data on the view
@@ -94,7 +96,7 @@ public class AdminViewController {
 			} finally {
 				
 				String message = "";
-				message = userAdded ? "Usuário registrado com sucesso!" : "Não foi possível registrar o usuário";
+				message = userAdded ? "UsuÃ¡rio registrado com sucesso!" : "JÃ¡ existe um usuÃ¡rio com o mesmo login.";
 				
 				this.registerUserMessage.setText(message);
 				this.registerUserMessage.setVisible(true);
@@ -120,7 +122,7 @@ public class AdminViewController {
 			e.printStackTrace();
 		} finally {
 			String message = "";
-			message = userRemoved ? "Usuário removido com sucesso!" : "Não foi possível remover o usuário";
+			message = userRemoved ? "UsuÃ¡rio removido com sucesso!" : "NÃ£o foi possÃ­vel remover o usuÃ¡rio";
 			
 			this.removeUserMessage.setText(message);
 			this.removeUserMessage.setVisible(true);
@@ -129,11 +131,13 @@ public class AdminViewController {
 		}
 	}
 	
-	
+	/**
+	 * Method to handle the search music button
+	 */
 	@FXML
 	public void handleSearchMusicButton() {
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Buscar música");
+		fileChooser.setTitle("Buscar mï¿½sica");
 		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
 		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("mp3", "*.mp3"));
 		File file = fileChooser.showOpenDialog(Main.getPrimaryStage());
@@ -141,6 +145,9 @@ public class AdminViewController {
 		this.musicPathLabel.setVisible(true);
 	}
 	
+	/**
+	 * Method to handle the add music button
+	 */
 	@FXML
 	public void	handleAddMusicButton() {
 		Music newMusic = new Music();
@@ -159,7 +166,7 @@ public class AdminViewController {
 			e.printStackTrace();
 		} finally {
 			String message = "";
-			message = musicAdded ? "Música adicionada com sucesso!" : "Não foi possível adicionar a música";
+			message = musicAdded ? "MÃºsica adiciona com sucesso!" : "JÃ¡ existe uma mÃºsica com o mesmo nome/diretÃ³rio.";
 			
 			this.addMusicMessage.setText(message);
 			this.addMusicMessage.setVisible(true);
@@ -168,7 +175,30 @@ public class AdminViewController {
 		}
 	}
 	
+	@FXML
+	public void handleRemoveMusicButton() {
+		MusicDAO userDAO = new MusicDAO();
+		boolean musicRemoved = true;
+		try {
+			userDAO.removeMusicByName(this.musicListView.getSelectionModel().getSelectedItem());
+			musicRemoved = true;
+		} catch (CannotDeleteMusicException e) {
+			musicRemoved = false;
+			e.printStackTrace();
+		} finally {
+			String message = "";
+			message = musicRemoved ? "MÃºsica removida com sucesso!" : "NÃ£o foi possÃ­vel remover a mÃºsica.";
+			
+			this.removeMusicMessage.setText(message);
+			this.removeMusicMessage.setVisible(true);
+			
+			this.updateMusicListView();
+		}
+	}
 	
+	/**
+	 * Method to update the music list
+	 */
 	private void updateMusicListView() {
 		this.musicListView.setItems(FXCollections.observableArrayList (new MusicDAO().getMusicNamesList()));
 	}

@@ -1,12 +1,12 @@
 package br.ufrn.imd.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import br.ufrn.imd.domain.Music;
+import br.ufrn.imd.exceptions.CannotDeleteMusicException;
 import br.ufrn.imd.exceptions.MusicAlreadyExistsException;
-import br.ufrn.imd.exceptions.UserAlreadyExistsException;
-import javafx.util.Callback;
 
 /**
  * 
@@ -57,7 +57,35 @@ public class MusicDAO {
 		}
 		
 	}
+	
+	/**
+	 * Method to add a new music. Verify is already exists a music with the same name or directory
+	 * @param music the music to add
+	 * @throws MusicAlreadyExistsException exception to show that the music already exists
+	 */
+	public void addNewMusic(Music music) throws MusicAlreadyExistsException {
+		boolean musicFound = false;
 
+		for (Iterator<Music> iterator = this.getMusics().iterator(); iterator.hasNext();) {
+			Music msc = iterator.next();
+			if (!musicFound) {
+				if (msc.getName().equals(music.getName()) || msc.getDirectory().equals(music.getDirectory())) {
+					musicFound = true;
+				}
+			}
+		}
+
+		if (!musicFound) {
+			this.addMusic(music);
+		} else {
+			throw new MusicAlreadyExistsException();
+		}
+	}
+
+	/**
+	 * Method to return the list with all music names
+	 * @return the list with all music names
+	 */
 	public List<String> getMusicNamesList() {
 		
 		List<String> result = new ArrayList<String>();
@@ -66,5 +94,28 @@ public class MusicDAO {
 			result.add(m.getName());
 		
 		return result;
+	}
+
+	/**
+	 * Remove the music by name
+	 * @param musicName the name of the music to delete
+	 * @throws CannotDeleteMusicException exception to show that the music couldn't be deleted
+	 */
+	public void removeMusicByName(String musicName) throws CannotDeleteMusicException{
+		boolean musicRemoved = false;
+
+		for (Iterator<Music> iterator = this.getMusics().iterator(); iterator.hasNext();) {
+			Music msc = iterator.next();
+			if (!musicRemoved) {
+				if (msc.getName().equals(musicName)) {
+					iterator.remove();
+					musicRemoved = true;
+				}
+			}
+		}
+
+		if (!musicRemoved)
+			throw new CannotDeleteMusicException();
+
 	}
 }
