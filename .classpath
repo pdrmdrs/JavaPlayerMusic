@@ -4,10 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
 	<classpathentry kind="lib" path="extras/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/pdr_m/.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="http://junit-team.github.io/junit/javadoc/latest/"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

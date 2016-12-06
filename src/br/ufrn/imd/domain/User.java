@@ -7,7 +7,7 @@ package br.ufrn.imd.domain;
  * @author pdr_m
  *
  */
-public class User {
+public class User implements Comparable<User> {
 	
 	/**
 	 * Int to represent the id counter of the users
@@ -235,6 +235,23 @@ public class User {
 		} else if (!username.equals(other.username))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(User arg0) {
+		
+		int result = 0;
+		
+		if(this.id > arg0.getId())
+			result = 1;
+		
+		if(this.id < arg0.getId())
+			result = -1;
+		
+		if(this.id == arg0.getId())
+			result = 0;
+		
+		return result;
 	}
 
 	

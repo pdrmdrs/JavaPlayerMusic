@@ -2,16 +2,16 @@ package br.ufrn.imd.binaryTree;
 
 /**
  * 
- * Classe que representa uma árvore binária de busca
+ * Classe que representa uma ï¿½rvore binï¿½ria de busca
  * 
  * @author pdr_m
  *
- * @param <T> tipo da árvore
+ * @param <T> tipo da ï¿½rvore
  */
 public class ArvoreBinaria<T extends Comparable<T>> {
 
 	/**
-	 * Nó raiz da árvore
+	 * Nï¿½ raiz da ï¿½rvore
 	 */
 	private No<T> raiz;
 
@@ -23,16 +23,16 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Construtor passando o valor do seu nó raiz
+	 * Construtor passando o valor do seu nï¿½ raiz
 	 * 
-	 * @param valor conteúdo do nó raiz
+	 * @param valor conteï¿½do do nï¿½ raiz
 	 */
 	public ArvoreBinaria(T valor) {
 		this.raiz = new No<T>(valor);
 	}
 
 	/**
-	 * Pega o nó raiz
+	 * Pega o nï¿½ raiz
 	 * 
 	 * @return raiz
 	 */
@@ -41,20 +41,20 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Seta o nó raiz
+	 * Seta o nï¿½ raiz
 	 * 
-	 * @param raiz da árvore
+	 * @param raiz da ï¿½rvore
 	 */
 	public void setRaiz(No<T> raiz) {
 		this.raiz = raiz;
 	}
 
 	/**
-	 * Busca um nó na árvore que contém o valor passado
+	 * Busca um nï¿½ na ï¿½rvore que contï¿½m o valor passado
 	 * 
 	 * @param valor
-	 *            valor do nó à ser buscado na árvore
-	 * @return nó que contém o valor buscado
+	 *            valor do nï¿½ ï¿½ ser buscado na ï¿½rvore
+	 * @return nï¿½ que contï¿½m o valor buscado
 	 */
 	public No<T> buscar(T valor) {
 		No<T> resultado = this.buscar(this.raiz, valor);
@@ -73,10 +73,10 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Insere um novo nó na árvore que tem como valor o valor passado
+	 * Insere um novo nï¿½ na ï¿½rvore que tem como valor o valor passado
 	 * 
 	 * @param valor
-	 *            valor do nó que será inserido na árvore
+	 *            valor do nï¿½ que serï¿½ inserido na ï¿½rvore
 	 */
 	public void inserir(T valor) {
 
@@ -106,11 +106,11 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Deleta um nó que contém o valor passado como parâmetro
+	 * Deleta um nï¿½ que contï¿½m o valor passado como parï¿½metro
 	 * 
 	 * @param valor
-	 *            do nó que será deletado
-	 * @return o nó que fora deletado
+	 *            do nï¿½ que serï¿½ deletado
+	 * @return o nï¿½ que fora deletado
 	 */
 	public No<T> deletar(T valor) {
 
@@ -177,7 +177,7 @@ public class ArvoreBinaria<T extends Comparable<T>> {
 	}
 
 	/**
-	 * Imprime os nós da árvore com o caminho EmOrdem
+	 * Imprime os nï¿½s da ï¿½rvore com o caminho EmOrdem
 	 */
 	public void percussoEmOrdem() {
 		this.percursoEmOrdem(this.raiz);

@@ -3,6 +3,7 @@ package br.ufrn.imd.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.ufrn.imd.binaryTree.ArvoreBinariaAdapter;
 import br.ufrn.imd.domain.Music;
 import br.ufrn.imd.domain.PlayList;
 import br.ufrn.imd.domain.User;
@@ -26,6 +27,7 @@ public class DataBase {
 	 * List to represents all the users
 	 */
 	private List<User> users = new ArrayList<>(); // TODO: change this to BST
+//	private final static ArvoreBinariaAdapter abbAdapter = new ArvoreBinariaAdapter();
 
 	/**
 	 * List to save all the musics on the app
@@ -69,7 +71,8 @@ public class DataBase {
 	 * @return the users list
 	 */
 	public List<User> getUsers() {
-		return users;
+		return this.users;
+//		return abbAdapter.returnAsList();
 	}
 
 	/**
@@ -80,6 +83,7 @@ public class DataBase {
 	 */
 	public void setUsers(List<User> users) {
 		this.users = users;
+//		this.abbAdapter.saveAsBinarySearchTree(users);
 	}
 
 	/**
