@@ -1,8 +1,12 @@
+br.ufrn.imd.binaryTree
 br.ufrn.imd.controllers
 br.ufrn.imd.dao
 br.ufrn.imd.domain
 br.ufrn.imd.exceptions
+br.ufrn.imd.interfaces
 br.ufrn.imd.io
 br.ufrn.imd.main
 br.ufrn.imd.navigation
+br.ufrn.imd.tests
 br.ufrn.imd.utils
+br.ufrn.imd.views
