@@ -36,11 +36,7 @@ public class Player implements PlayerInterface {
 		this.player = player;
 	}
 
-//	private static Player instance = new Player();
-	
 	public Player() {
-		//this.musicPlaying = new MusicDAO().getMusics().get(0);
-//		this.createInstance();
 	}
 	
 	public void createInstance() {
